@@ -1,11 +1,19 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:tunes_app/components/category_container_item.dart';
+import 'package:tunes_app/models/item_model.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final player = AudioPlayer();
-
+  final List<ItemModel> items = const [
+    ItemModel(Sound: "sounds/note1.wav", color: Colors.red),
+    ItemModel(Sound: "sounds/note2.wav", color: Colors.orange),
+    ItemModel(Sound: "sounds/note3.wav", color: Colors.yellow),
+    ItemModel(Sound: "sounds/note4.wav", color: Colors.green),
+    ItemModel(Sound: "sounds/note5.wav", color: Colors.teal),
+    ItemModel(Sound: "sounds/note6.wav", color: Colors.blue),
+    ItemModel(Sound: "sounds/note7.wav", color: Colors.purple)
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,64 +31,13 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: Column(
-        children: [
-          Expanded(
+        children: items.map((item) {
+          return Expanded(
             child: CategoryContainerItem(
-              color: Colors.red,
-              onTap: () {
-                player.play(AssetSource("sounds/note1.wav"));
-              },
+              item: item,
             ),
-          ),
-          Expanded(
-            child: CategoryContainerItem(
-              color: Colors.orange,
-              onTap: () {
-                player.play(AssetSource("sounds/note2.wav"));
-              },
-            ),
-          ),
-          Expanded(
-            child: CategoryContainerItem(
-              color: Colors.yellow,
-              onTap: () {
-                player.play(AssetSource("sounds/note3.wav"));
-              },
-            ),
-          ),
-          Expanded(
-            child: CategoryContainerItem(
-              color: Colors.green,
-              onTap: () {
-                player.play(AssetSource("sounds/note4.wav"));
-              },
-            ),
-          ),
-          Expanded(
-            child: CategoryContainerItem(
-              color: Colors.teal,
-              onTap: () {
-                player.play(AssetSource("sounds/note5.wav"));
-              },
-            ),
-          ),
-          Expanded(
-            child: CategoryContainerItem(
-              color: Colors.blue,
-              onTap: () {
-                player.play(AssetSource("sounds/note6.wav"));
-              },
-            ),
-          ),
-          Expanded(
-            child: CategoryContainerItem(
-              color: Colors.purple,
-              onTap: () {
-                player.play(AssetSource("sounds/note7.wav"));
-              },
-            ),
-          ),
-        ],
+          );
+        }).toList(),
       ),
     );
   }
