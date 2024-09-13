@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:tunes_app/models/item_model.dart';
 
-class CategoryContainerItem extends StatelessWidget {
-  const CategoryContainerItem({
+class TuneItem extends StatelessWidget {
+  const TuneItem({
     super.key,
     required this.item,
   });
-  final ItemModel item;
+  final TuneModel item;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: item.playSound,
-      child: Container(
-        color: item.color,
+    return Expanded(
+      child: GestureDetector(
+        onTap: item.playSound,
+        child: Container(
+          color: item.color,
+        ),
       ),
     );
   }

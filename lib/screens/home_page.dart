@@ -5,22 +5,23 @@ import 'package:tunes_app/models/item_model.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final List<ItemModel> items = const [
-    ItemModel(Sound: "sounds/note1.wav", color: Colors.red),
-    ItemModel(Sound: "sounds/note2.wav", color: Colors.orange),
-    ItemModel(Sound: "sounds/note3.wav", color: Colors.yellow),
-    ItemModel(Sound: "sounds/note4.wav", color: Colors.green),
-    ItemModel(Sound: "sounds/note5.wav", color: Colors.teal),
-    ItemModel(Sound: "sounds/note6.wav", color: Colors.blue),
-    ItemModel(Sound: "sounds/note7.wav", color: Colors.purple)
+  final List<TuneModel> items = const [
+    TuneModel(Sound: "sounds/note1.wav", color: Colors.red),
+    TuneModel(Sound: "sounds/note2.wav", color: Colors.orange),
+    TuneModel(Sound: "sounds/note3.wav", color: Colors.yellow),
+    TuneModel(Sound: "sounds/note4.wav", color: Colors.green),
+    TuneModel(Sound: "sounds/note5.wav", color: Colors.teal),
+    TuneModel(Sound: "sounds/note6.wav", color: Colors.blue),
+    TuneModel(Sound: "sounds/note7.wav", color: Colors.purple)
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black54,
-        title: const Center(
-          child: Text(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Color(0xff253238),
+          centerTitle: true,
+          title: Text(
             "Flutter Tune",
             style: TextStyle(
               color: Colors.white,
@@ -29,16 +30,9 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      body: Column(
-        children: items.map((item) {
-          return Expanded(
-            child: CategoryContainerItem(
-              item: item,
-            ),
-          );
-        }).toList(),
-      ),
-    );
+        body: Column(
+            children: items.map((item) {
+          return TuneItem(item: item);
+        }).toList()));
   }
 }
